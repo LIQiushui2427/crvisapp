@@ -1,22 +1,14 @@
-import React from "react";
+import React from 'react';
+import TableauViz from './TableauViz';
 
-// Declare tableau-viz as a valid JSX element
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'tableau-viz': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
-        src: string;
-      };
-    }
-  }
-}
-
-const App: React.FC = () => {
+function App() {
   return (
     <div className="App">
-      {/* <h1>Stock Price Visualization</h1> */}
+      <h1>Singapore Weather Index</h1>
+      <p className="credits">By Prof Joey ZHOU, Davy, Easy, Kevin</p>
+      <TableauViz />
     </div>
   );
-};
+}
 
 export default App;

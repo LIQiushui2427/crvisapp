@@ -5,46 +5,32 @@
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
+    <meta name="description" content="Web site created using create-react-app" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
-    <title>React App</title>
+    <title>Singapore Weather Index</title>
     <script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js"></script>
 
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        console.log("Checking window.tableau:", window.tableau);
+        if (window.tableau) {
+          console.log("Tableau API loaded successfully");
+        } else {
+          console.log("Tableau API did not load");
+        }
+      });
+    </script>
     <style>
       body {
         font-family: Arial, Helvetica, sans-serif;
         text-align: center;
         margin: 20px;
       }
-      h1 {
-        font-size: 2.5em;
-        color: #333;
-      }
-      .credits {
-        font-size: 1em;
-        color: #777;
-        margin-top: -10px;
-        margin-bottom: 20px;
-      }
-      #tableauViz {
-        width: 80%;
-        height: 600px;
-        margin: 0 auto;
-      }
     </style>
   </head>
   <body>
-    <h1>Singapore Weather Index</h1>
-    <p class="credits">By Prof Joey ZHOU, Davy, Easy, Kevin</p>
-
-    <tableau-viz id="tableauViz"       
-        src='https://10ax.online.tableau.com/#/site/tbc82/views/TestTableau/Chart'
-         >
-    </tableau-viz>
+    <div id="root"></div>
   </body>
 </html>
