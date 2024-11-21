@@ -14,36 +14,39 @@ const PORT = 4000;
 
 app.use(cors());  // Enable CORS for all routes
 
-
 app.get('/generate-jwt', (req, res) => {
   const clientId = process.env.CLIENT_ID;
   const clientSecret = process.env.CLIENT_SECRET;
   const secretId = process.env.SECRET_ID;
-  const issuerUri = process.env.ISSUER_URI;
 
-  if (!clientId || !clientSecret || !secretId || !issuerUri) {
+  if (!clientId || !clientSecret || !secretId) {
     return res.status(500).json({ error: 'Missing environment variables' });
   }
-
+  const currentTimestamp = Math.floor(Date.now() / 1000);
   // Define JWT header
   const header = {
     kid: secretId,  // Secret ID for the connected app
     alg: 'HS256',   // Signing algorithm
+    typ: 'JWT',     // Set typ explicitly to 'JWT'
+    iss: clientId,  // Client ID for the connected app
   };
 
   // Define JWT payload with required claims
   const payload = {
-    iss: issuerUri,                      // Issuer URI (unique identifier for your app)
     sub: 's240079@e.ntu.edu.sg',           // Replace with the email of the Tableau Cloud user
-    aud: 'tableau',                       // Audience - fixed to "tableau"
-    exp: Math.floor(Date.now() / 1000) + 600,  // Expiration time (10 minutes from now)
-    jti: uuidv4(),                        // JWT ID, a unique identifier for the token
-    scp: ['tableau:views:embed'],         // Scope, for embedding workflows
+    iss: clientId,                         // Client ID for the connected app
+    aud: 'tableau',                        // Audience - fixed to "tableau"
+    exp: currentTimestamp + 60 * 60,       // Expiration time (1 hour from now)
+    jti: currentTimestamp.toString(),      // Unique identifier for the JWT
+    scp: ['tableau:views:embed'],          // Required scope for embedding views
   };
 
   // Generate the JWT
   try {
-    const token = jwt.sign(payload, clientSecret, { header });
+    const token = jwt.sign(payload, clientSecret, {
+      header,
+      noTimestamp: true, // This option prevents 'iat' from being added automatically
+    });
     res.json({ token });
   } catch (error) {
     console.error('Error generating JWT:', error);
@@ -56,5 +59,5 @@ app.listen(PORT, () => {
 });
 
 app.get('/', (req, res) => {
-    res.send('JWT Generator is running.');
-  });
+  res.send('JWT Generator is running.');
+});
