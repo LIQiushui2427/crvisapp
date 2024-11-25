@@ -19,7 +19,6 @@ const TableauViz: React.FC = () => {
 
     fetchToken();
   }, []);
-  console.log('token:', token);
   return (
     <div>
       <tableau-viz 
