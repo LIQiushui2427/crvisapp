@@ -91,7 +91,6 @@ const TableauViz: React.FC = () => {
           height="800px"
           width="100%"
           toolbar="Bottom"
-          hide-tabs
         ></tableau-viz>
       `;
     }
