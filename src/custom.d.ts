@@ -6,6 +6,8 @@ declare namespace JSX {
       > & { 
           src: string; 
           token: string; 
+          width: string;
+          height: string;
       };
   }
 }

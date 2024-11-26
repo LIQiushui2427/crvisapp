@@ -1,6 +1,5 @@
-import TableauViz from "../TableauViz";
+import TableauViz from "../components/TableauViz";
 import React from "react";
-
 function TableauVizPage() {
   return (
     <div>

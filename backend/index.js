@@ -34,15 +34,18 @@ app.get('/generate-jwt', (req, res) => {
   // Define JWT payload with required claims
   const payload = {
     sub: 's240079@e.ntu.edu.sg',           // Replace with the email of the Tableau Cloud user
-    iss: clientId,                         // Client ID for the connected app
     aud: 'tableau',                        // Audience - fixed to "tableau"
     exp: currentTimestamp + 60 * 60,       // Expiration time (1 hour from now)
-    jti: currentTimestamp.toString(),      // Unique identifier for the JWT
+    jti: uuidv4(),     // Unique identifier for the JWT
     scp: ['tableau:views:embed'],          // Required scope for embedding views
   };
 
   // Generate the JWT
   try {
+    console.log('Generating JWT...');
+    console.log('Header:', header);
+    console.log('Payload:', payload);
+  
     const token = jwt.sign(payload, clientSecret, {
       header,
       noTimestamp: true, // This option prevents 'iat' from being added automatically
