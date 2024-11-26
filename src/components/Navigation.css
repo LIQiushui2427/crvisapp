@@ -1,0 +1,60 @@
+/* Navigation.css */
+
+/* Main navigation container */
+.navbar {
+    background-color: #333; /* Dark background color */
+    padding: 10px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for visual elevation */
+    position: sticky; /* Make navbar stick to the top on scroll */
+    top: 0;
+    z-index: 1000; /* Ensure it stays above other content */
+}
+
+/* Navigation menu (unordered list) */
+.nav-menu {
+    list-style: none; /* Remove default bullet points (dots) */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Flexbox ensures items are in a row */
+    flex-direction: row; /* Explicitly set items to be horizontal */
+    justify-content: flex-start; /* Align items to the left */
+    align-items: center; /* Vertically align items */
+    gap: 20px; /* Add spacing between items */
+}
+
+/* Navigation link styles */
+.nav-link {
+    text-decoration: none; /* Remove underline from links */
+    color: #f2f2f2; /* Light text color */
+    padding: 10px 15px; /* Add padding to clickable areas */
+    font-size: 16px;
+    font-weight: 500; /* Slightly bold text */
+    border-radius: 5px; /* Rounded corners for hover effect */
+    transition: background-color 0.3s, color 0.3s; /* Smooth hover effect */
+}
+
+/* Hover state for links */
+.nav-link:hover {
+    background-color: #575757; /* Slightly lighter background on hover */
+    color: white; /* Change text color on hover */
+}
+
+/* Active link */
+.nav-link.active {
+    background-color: #007bff; /* Blue background for active link */
+    color: white; /* White text for active link */
+}
+
+/* Responsive layout for smaller screens */
+@media (max-width: 768px) {
+    .nav-menu {
+        flex-direction: column; /* Stack items vertically for smaller screens */
+        align-items: flex-start; /* Align links to the left */
+    }
+
+    .nav-link {
+        width: 100%; /* Make links take full width */
+        text-align: left; /* Align text to the left */
+        padding: 10px; /* Add padding for better spacing */
+    }
+}
