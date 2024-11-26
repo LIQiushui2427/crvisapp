@@ -28,7 +28,13 @@ jobs:
           REACT_APP_TABLEAU_WURL: ${{ secrets.REACT_APP_TABLEAU_WURL }}
           REACT_APP_TABLEAU_SCP: ${{ secrets.REACT_APP_TABLEAU_SCP }}
           REACT_APP_PUBLIC_URL: ${{ secrets.REACT_APP_PUBLIC_URL }}
-        run: echo "Environment variables set"
+        run: |
+          echo "REACT_APP_CLIENT_ID=${{ secrets.REACT_APP_CLIENT_ID }}"
+          echo "REACT_APP_CLIENT_SECRET=${{ secrets.REACT_APP_CLIENT_SECRET }}"
+          echo "REACT_APP_SECRET_ID=${{ secrets.REACT_APP_SECRET_ID }}"
+          echo "REACT_APP_TABLEAU_WURL=${{ secrets.REACT_APP_TABLEAU_WURL }}"
+          echo "REACT_APP_TABLEAU_SCP=${{ secrets.REACT_APP_TABLEAU_SCP }}"
+          echo "REACT_APP_PUBLIC_URL=${{ secrets.REACT_APP_PUBLIC_URL }}"
 
       - name: Build the project
         run: npm run build
