@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import CryptoJS from "crypto-js"; // Import CryptoJS for token creation
 
 const TableauViz: React.FC = () => {
@@ -55,7 +55,7 @@ const TableauViz: React.FC = () => {
     return encodedSource;
   };
 
-  const handleGenerateViz = (): void => {
+  const handleGenerateViz = useCallback((): void => {
     const userid = (document.getElementById("userid") as HTMLInputElement).value;
     const iss = process.env.REACT_APP_CLIENT_ID;
     const kid = process.env.REACT_APP_SECRET_ID
@@ -95,7 +95,7 @@ const TableauViz: React.FC = () => {
         ></tableau-viz>
       `;
     }
-  };
+  }, []);
 
   useEffect(() => {
     const button = document.getElementById("showme");
@@ -108,7 +108,7 @@ const TableauViz: React.FC = () => {
         button.removeEventListener("click", handleGenerateViz);
       }
     };
-  }, []);
+  }, [handleGenerateViz]);
 
   return (
     <div style={{ padding: "20px 100px" }}>
@@ -128,32 +128,7 @@ const TableauViz: React.FC = () => {
       <div className="form-group row">
         <div className="col-sm-2 col-form-label">
           <button id="showme" className="btn btn-primary">
-            Show Me the Dash!
-          </button>
-        </div>
-        <div className="col-sm-8">
-          <input
-            className="form-control"
-            id="jwt"
-            type="text"
-            readOnly
-            placeholder="Generated JWT will appear here..."
-          />
-        </div>
-        <div className="col-sm-2">
-          <button
-            className="btn btn-secondary"
-            id="dec"
-            onClick={() =>
-              window.open(
-                `https://jwt.io/#debugger-io?token=${
-                  (document.getElementById("jwt") as HTMLInputElement)?.value
-                }`,
-                "_blank"
-              )
-            }
-          >
-            Decode on JWT.io
+            Proceed
           </button>
         </div>
       </div>

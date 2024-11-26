@@ -7,11 +7,11 @@ function App() {
   return (
     <div>
       <h1>Singapore Weather Index</h1>
-    <Router>
+    <Router basename={process.env.PUBLIC_URL || "/"}>
       <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="Viz" element={<TableauVizPage />} />
+        <Route path="/Viz" element={<TableauVizPage />} />
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
         <Route path="/contact" element={<Contact />} />
