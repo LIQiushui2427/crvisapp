@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/crvisapp/static/css/main.e6c13ad2.css",
-    "main.js": "/crvisapp/static/js/main.605e8e3b.js",
+    "main.css": "/crvisapp/static/css/main.8b7af19f.css",
+    "main.js": "/crvisapp/static/js/main.3d0fa04b.js",
     "static/js/453.8ab44547.chunk.js": "/crvisapp/static/js/453.8ab44547.chunk.js",
     "index.html": "/crvisapp/index.html",
-    "main.e6c13ad2.css.map": "/crvisapp/static/css/main.e6c13ad2.css.map",
-    "main.605e8e3b.js.map": "/crvisapp/static/js/main.605e8e3b.js.map",
+    "main.8b7af19f.css.map": "/crvisapp/static/css/main.8b7af19f.css.map",
+    "main.3d0fa04b.js.map": "/crvisapp/static/js/main.3d0fa04b.js.map",
     "453.8ab44547.chunk.js.map": "/crvisapp/static/js/453.8ab44547.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e6c13ad2.css",
-    "static/js/main.605e8e3b.js"
+    "static/css/main.8b7af19f.css",
+    "static/js/main.3d0fa04b.js"
   ]
 }
