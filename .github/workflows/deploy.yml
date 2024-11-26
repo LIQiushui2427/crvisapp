@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    environment: github-pages
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -26,15 +26,10 @@ jobs:
           REACT_APP_CLIENT_SECRET: ${{ secrets.REACT_APP_CLIENT_SECRET }}
           REACT_APP_SECRET_ID: ${{ secrets.REACT_APP_SECRET_ID }}
           REACT_APP_TABLEAU_WURL: ${{ secrets.REACT_APP_TABLEAU_WURL }}
-          REACT_APP_TABLEAU_SCP: ${{ env.REACT_APP_TABLEAU_SCP }}
-          REACT_APP_PUBLIC_URL: ${{ env.REACT_APP_PUBLIC_URL }}
+          REACT_APP_TABLEAU_SCP: ${{ vars.REACT_APP_TABLEAU_SCP }}
+          REACT_APP_PUBLIC_URL: ${{ vars.REACT_APP_PUBLIC_URL }}
         run: |
-          echo "REACT_APP_CLIENT_ID=${{ secrets.REACT_APP_CLIENT_ID }}"
-          echo "REACT_APP_CLIENT_SECRET=${{ secrets.REACT_APP_CLIENT_SECRET }}"
-          echo "REACT_APP_SECRET_ID=${{ secrets.REACT_APP_SECRET_ID }}"
-          echo "REACT_APP_TABLEAU_WURL=${{ secrets.REACT_APP_TABLEAU_WURL }}"
-          echo "REACT_APP_TABLEAU_SCP=${{ env.REACT_APP_TABLEAU_SCP }}"
-          echo "REACT_APP_PUBLIC_URL=${{ env.REACT_APP_PUBLIC_URL }}"
+          echo "Environment variables are set"
 
       - name: Build the project
         run: npm run build
